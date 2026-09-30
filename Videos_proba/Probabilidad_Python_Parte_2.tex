@@ -1,0 +1,46 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.1ex}{0.5ex}
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.3ex}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{parskip}
+\begin{document}
+\begin{center}
+{\Large\bfseries Probabilidad en Python - Resumen (Parte 2)}
+\end{center}
+\section*{1. Conceptos fundamentales}
+\begin{itemize}
+\item Evento: subconjunto del espacio muestral $\Omega$.
+\item Asignación de probabilidad: a cada evento A contenido en $\Omega$ se le asigna un número entre 0 y 1 mediante la regla clásica: P(A) = |A|/|$\Omega$|.
+\end{itemize}
+\section*{2. Definición de la función de probabilidad en Python}
+Para calcular automáticamente la probabilidad de un evento, se puede definir una función usando len(), que obtiene la cardinalidad de un conjunto:
+
+\begin{verbatim}
+def P(A, Omega):
+    return len(A) / len(Omega)
+\end{verbatim}
+\begin{itemize}
+\item len(A): cardinalidad del evento A, es decir, número de casos favorables.
+\item len(Omega): cardinalidad del espacio muestral $\Omega$, es decir, número de casos totales.
+\end{itemize}
+\section*{3. Eventos y operaciones de conjuntos en Python}
+\begin{itemize}
+\item Unión de eventos (A $\cup$ B): sucede A o sucede B.
+\item Intersección de eventos (A $\cap$ B): suceden A y B al mismo tiempo.
+\item Diferencia de eventos (A \textbackslash{} B): sucede A pero no sucede B.
+\item Complemento de un evento (A$^c$): elementos de $\Omega$ que no pertenecen a A.
+\end{itemize}
+\section*{4. Probabilidad condicionada}
+La probabilidad de que suceda A dado que ya sucedió B se define como:
+
+P(A | B) = P(A $\cap$ B) / P(B), siempre que P(B) > 0.
+
+El archivo original termina indicando que la implementación en Python se realiza con una función que recibe los eventos A y B dentro del espacio muestral $\Omega$; no incluye el código de esa función.
+
+\end{document}

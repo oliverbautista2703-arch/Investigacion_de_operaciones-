@@ -1,0 +1,54 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.1ex}{0.5ex}
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.3ex}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{parskip}
+\begin{document}
+\begin{center}
+{\Large\bfseries Probabilidad en Python - Resumen}
+\end{center}
+\section*{1. Probabilidad clásica o modelo laplaciano}
+\begin{itemize}
+\item Experimento aleatorio: experimento que produce resultados aleatorios, como lanzar un dado o una moneda.
+\item Espacio muestral ($\Omega$): conjunto de todos los posibles resultados del experimento aleatorio.
+\end{itemize}
+\subsection*{Hipótesis del modelo clásico}
+\begin{itemize}
+\item La cardinalidad del espacio muestral $\Omega$ es finita.
+\item A cada resultado elemental del espacio muestral se le asigna la misma probabilidad: 1/|$\Omega$|.
+\item Tratamiento de eventos: los eventos se consideran subconjuntos de $\Omega$; la intersección representa “y” y la unión representa “o”.
+\item Cálculo de la probabilidad de un evento A: P(A) = |A|/|$\Omega$|.
+\end{itemize}
+\section*{2. Lanzamiento de dos dados honestos}
+\begin{itemize}
+\item Cada dado tiene resultados del 1 al 6.
+\item Al lanzar los dos dados, los resultados se representan mediante parejas ordenadas (dado 1, dado 2).
+\item Número total de resultados posibles: 6 × 6 = 36.
+\end{itemize}
+\section*{3. ¿Cómo lo hacemos en Python?}
+\subsection*{A. Librería itertools}
+En lugar de utilizar varios ciclos for anidados, se puede usar itertools.product(), que calcula el producto cartesiano. Si se aplica set(), el resultado se convierte en un conjunto.
+
+\subsection*{B. Generar el espacio muestral con listas}
+\begin{verbatim}
+Omega = [(i, j) for i in range(1, 7) for j in range(1, 7)]
+\end{verbatim}
+\subsection*{C. Filtrar eventos por la suma de los dados (S\_n)}
+Se crea una función para identificar las parejas cuya suma sea un número específico n.
+
+\begin{itemize}
+\item Sumas imposibles: obtener una suma menor que 2 o mayor que 12 produce una lista vacía, por lo que su probabilidad es 0.
+\item Ejemplo: para obtener suma 9, los casos favorables son (3,6), (4,5), (5,4) y (6,3).
+\end{itemize}
+\section*{4. Cálculo de probabilidades}
+Probabilidad de que la suma sea 9:\\P(Suma = 9) = 4/36 = 1/9 $\approx$ 11.1\%
+
+Probabilidad de obtener doble 6:\\P((6,6)) = 1/36 $\approx$ 2.8\%.
+
+\end{document}
