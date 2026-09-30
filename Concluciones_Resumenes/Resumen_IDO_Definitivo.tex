@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{amsmath}
+\title{\textbf{Resumen Definitivo\\Investigación de Operaciones}}
+\author{Notas, videos y material computacional}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{Introducción}
+La Investigación de Operaciones (IO) estudia la toma de decisiones mediante modelos matemáticos. Su propósito es representar situaciones reales, identificar decisiones, objetivos y restricciones, y encontrar soluciones que aprovechen de manera eficiente los recursos disponibles. El material del curso conecta esta formulación con álgebra lineal, método Simplex, dualidad, análisis posterior a la optimización y herramientas computacionales en Python.
+
+
+\section*{1. Formulación de modelos de Investigación de Operaciones}
+La construcción de un modelo comienza por describir el contexto y las decisiones que deben tomarse. Después se definen las variables de decisión, se formula una función objetivo de maximización o minimización y se expresan las limitaciones del problema mediante restricciones lineales. También se incorporan las condiciones de no negatividad y se revisa que las unidades utilizadas sean consistentes.
+
+En términos generales, un modelo de programación lineal puede escribirse mediante una función objetivo y un conjunto de restricciones. La interpretación de cada variable y coeficiente es tan importante como el cálculo, porque permite relacionar la solución matemática con el problema real.
+
+
+\section*{2. Representación matricial y álgebra lineal}
+Cuando existen muchas variables y restricciones, el modelo puede representarse de forma compacta mediante matrices. La expresión AX = B reúne la matriz de coeficientes A, el vector de incógnitas X y el vector de términos independientes B.
+
+La matriz aumentada [A | B] permite aplicar eliminación de Gauss o Gauss-Jordan. Las operaciones elementales de fila son: intercambiar filas, multiplicar una fila por un escalar distinto de cero y sumar a una fila un múltiplo de otra. Estas herramientas sirven para resolver sistemas y preparar la estructura algebraica que aparece en los métodos de optimización.
+
+
+\section*{3. Método Simplex y variables auxiliares}
+El método Simplex es un procedimiento iterativo que se desplaza entre soluciones básicas factibles hasta alcanzar una solución óptima. Para trabajar con igualdades se utilizan variables auxiliares.
+
+La variable de holgura se suma a una restricción de tipo menor o igual y representa recurso no utilizado. La variable de exceso se resta en una restricción de tipo mayor o igual y representa cuánto se supera un mínimo. La variable artificial se utiliza para construir una base inicial cuando una restricción de igualdad o de tipo mayor o igual no proporciona una variable básica conveniente; al final debe desaparecer de la solución.
+
+
+\section*{4. Método de la Gran M}
+Cuando el modelo requiere variables artificiales, el método de la Gran M las penaliza fuertemente en la función objetivo. La finalidad es expulsarlas de la base durante las iteraciones. El material presenta un caso de minimización en el que la función objetivo incluye términos con M y, después del proceso de pivoteo, se obtiene una solución con x1 = 1500, x2 = 3500 y costo mínimo de 37,000 unidades monetarias. El exceso final permite interpretar cuánto se supera una demanda mínima y una holgura igual a cero indica que el recurso correspondiente quedó completamente utilizado.
+
+
+\section*{5. Ejemplo de maximización mediante Simplex}
+En el ejemplo de mezcla de producción se maximiza Z = 4x1 + 6x2 sujeto a restricciones de horas máquina, materia prima y límite de mercado. La solución continua obtenida es x1 = 1600/3 \(\approx\) 533.33 y x2 = 1000/3 \(\approx\) 333.33, con Z = 12400/3 \(\approx\) 4133.33.
+
+Las dos primeras holguras son cero, por lo que las horas máquina y la materia prima se utilizan totalmente. La tercera holgura es 500/3 \(\approx\) 166.67, lo que indica capacidad disponible respecto al límite de mercado del producto A.
+
+
+\section*{6. Dualidad en programación lineal - contenido de los videos}
+La teoría de la dualidad establece que a un problema de programación lineal, llamado primal, se le puede asociar otro problema denominado dual. En el material de los videos se presenta la relación entre ambos: un problema primal de maximización se vincula con un dual de minimización; el vector de coeficientes del objetivo y el vector de recursos intercambian su función, y la matriz de restricciones se transforma mediante su transpuesta.
+
+El teorema de dualidad fuerte establece que, cuando existen soluciones óptimas finitas, el valor óptimo del primal coincide con el del dual. Esta relación permite interpretar económicamente los recursos y los costos de oportunidad.
+
+
+\section*{7. Mecánica de las tablas Simplex - contenido de los videos}
+En las tablas Simplex, la variable entrante se identifica mediante los costos reducidos. En el criterio mostrado en el material, para maximización se selecciona el valor positivo más alto de Cj - Zj; para minimización se considera el valor más negativo.
+
+Después se aplica la prueba del cociente mínimo. Se divide el término independiente entre los elementos estrictamente positivos de la columna pivote. La menor razón no negativa determina la variable que sale de la base. A continuación se realiza el pivoteo y se repite el procedimiento hasta satisfacer el criterio de optimalidad.
+
+
+\section*{8. Análisis post-optimización y situaciones especiales}
+El análisis posterior permite interpretar la solución y estudiar qué ocurre ante cambios en los recursos. El precio sombra representa el cambio marginal en el valor óptimo de la función objetivo cuando aumenta en una unidad la disponibilidad de un recurso, dentro del rango en que la base se mantiene válida.
+
+El material también distingue cuatro situaciones especiales: óptimos múltiples, cuando una variable no básica presenta costo reducido cero en la tabla óptima; degeneración, asociada a empates en la prueba del cociente mínimo y variables básicas con valor cero; no factibilidad, cuando una variable artificial permanece positiva al final; y no acotación, cuando no existe una variable de salida adecuada y el objetivo puede mejorar indefinidamente.
+
+
+\section*{9. Sucesiones de variables aleatorias y modos de convergencia}
+Las notas complementarias estudian sucesiones de variables aleatorias y diferentes formas de convergencia. Entre ellas aparecen la convergencia casi segura, en probabilidad, en distribución y en Lp. La convergencia en Lp se expresa mediante E[|Xn - X|^p] \(\to\) 0.
+
+El lema de Borel-Cantelli se utiliza para estudiar la ocurrencia repetida de eventos y aparece como herramienta en demostraciones de convergencia. Las notas muestran ejemplos que permiten distinguir los distintos modos de convergencia y observar que no todos son equivalentes.
+
+
+\section*{10. Ley de los Grandes Números}
+Para una sucesión de variables aleatorias independientes e idénticamente distribuidas se estudia el promedio Mn = (X1 + \ldots{} + Xn)/n. La Ley Débil de los Grandes Números establece convergencia en probabilidad, mientras que la Ley Fuerte establece convergencia casi segura bajo las hipótesis correspondientes.
+
+La idea central es que, al aumentar el número de observaciones, el promedio muestral se aproxima al valor esperado. Esta propiedad también sirve como fundamento para la simulación computacional de probabilidades mediante frecuencias relativas.
+
+
+\section*{11. Convergencia débil, TCL y teorema de Lévy}
+La convergencia débil o en distribución puede estudiarse mediante funciones de distribución y funciones continuas acotadas. Las notas del Teorema Central del Límite desarrollan esta idea y conectan la convergencia de sumas normalizadas con la distribución normal.
+
+El material también introduce el teorema de continuidad de Lévy, que relaciona la convergencia en distribución con la convergencia puntual de funciones características. Las notas amplían el TCL mediante resultados de Lindeberg-Feller y Lyapunov para sucesiones de variables independientes que no necesariamente tienen la misma distribución.
+
+
+\section*{12. Cambio de medida en probabilidad}
+Las notas de cambio de medida parten de espacios medibles y medidas de probabilidad, construyen la integral de Lebesgue y muestran cómo definir una nueva medida Q a partir de una densidad Z respecto de una medida P. La relación se expresa como Q(A) = \(\int\)\_A Z dP.
+
+El teorema de Radon-Nikodym formaliza la existencia de una densidad dQ/dP cuando Q es absolutamente continua respecto de P, bajo las condiciones indicadas en las notas. Este marco conecta teoría de la medida, distribuciones, transformaciones de variables y aplicaciones probabilísticas.
+
+
+\section*{13. Modelos de supervivencia y aprendizaje automático - material de los videos}
+El compendio de los videos incluye una sección de análisis de supervivencia. Se estudia el tiempo hasta la ocurrencia de un evento y se destaca la presencia de datos censurados, es decir, observaciones en las que el evento no se alcanza a observar durante el periodo de seguimiento.
+
+El documento relaciona estos modelos con técnicas de aprendizaje automático capaces de trabajar con conjuntos de variables predictoras más amplios. Esta parte se presenta como una extensión del análisis cuantitativo hacia aplicaciones actuariales y de riesgo.
+
+
+\section*{14. Computación estocástica y Probabilidad en Python}
+La parte práctica utiliza Python para representar experimentos aleatorios. El material incluye simulaciones de un dado mediante random.randint, de una moneda mediante random.choice y un experimento repetido para estimar la probabilidad de obtener cara.
+
+En la simulación frecuentista, se repite el experimento muchas veces, se cuenta el número de resultados favorables y se divide entre el total de repeticiones. El ejemplo con 1000 lanzamientos ilustra cómo la frecuencia relativa se aproxima a la probabilidad teórica, conectando la programación con la Ley de los Grandes Números.
+
+
+\section*{Conclusión}
+El material integra formulación matemática, álgebra lineal, optimización, dualidad, probabilidad y herramientas computacionales. El objetivo no es únicamente obtener un número final, sino interpretar qué representa cada variable, restricción, holgura, costo reducido o resultado de una simulación. La combinación de modelos matemáticos y código permite analizar problemas complejos, comprobar resultados y fundamentar decisiones cuantitativas.
+
+\end{document}

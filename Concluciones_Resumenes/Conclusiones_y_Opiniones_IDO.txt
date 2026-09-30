@@ -1,0 +1,16 @@
+CONCLUSIONES Y OPINIONES
+
+Conclusiones
+
+El material permite comprender que la Investigación de Operaciones no se
+limita a realizar cálculos, sino que ayuda a representar problemas,
+optimizar recursos e interpretar los resultados obtenidos. Además, el
+uso de probabilidad y Python complementa los métodos matemáticos
+mediante simulaciones y comprobaciones computacionales.
+
+Opinión personal
+
+En mi opinión, estos temas son útiles porque relacionan la teoría con
+situaciones que pueden analizarse de forma práctica. El uso de Python
+facilita visualizar los resultados y entender mejor conceptos que, solo
+con fórmulas, pueden parecer más complicados.
